@@ -1,10 +1,8 @@
 import "./App.css";
 import ProtectedRoute from "./common/ProtectedRoute";
 import SharedLayout from "./common/SharedLayout";
-import Navbar from "./components/Navbar";
 import AOHome from "./pages/AOHome";
 import TRIndex from "./pages/TR/TRIndex";
-import UserForm from "./pages/accountDetails/UserForm";
 import LoginPage from "./pages/login/loginIndex";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useGlobalContext } from "./common/GlobalContext";
@@ -13,11 +11,10 @@ import SignUpPage from "./pages/accountDetails/SignUpPage";
 import Users from "./pages/login/Users";
 
 function App() {
-  const { currentUser, setCurrentUser, setTempUser } = useGlobalContext();
+  const { setTempUser } = useGlobalContext();
   return (
     <>
-      {/* <BrowserRouter basename="/react-ao2"> */}
-      <BrowserRouter>
+      <BrowserRouter basename="/react-ao-2">
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<LoginPage />} />
