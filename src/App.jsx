@@ -13,26 +13,24 @@ import Users from "./pages/login/Users";
 function App() {
   const { setTempUser } = useGlobalContext();
   return (
-    <>
-      <BrowserRouter basename="/react-ao-2">
-        <Routes>
-          <Route path="/" element={<SharedLayout />}>
-            <Route index element={<LoginPage />} />
-            <Route
-              path="signup"
-              element={<SignUpPage />}
-              onClick={() => setTempUser(Users[1])}
-            />
+    <BrowserRouter basename="/react-ao-2/">
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<LoginPage />} />
+          <Route
+            path="signup"
+            element={<SignUpPage />}
+            onClick={() => setTempUser(Users[1])}
+          />
 
-            <Route element={<ProtectedRoute />}>
-              <Route path="home" element={<AOHome />} />
-              <Route path="accountdetails" element={<AccountDetailsIndex />} />
-              <Route path="tr" element={<TRIndex />} />
-            </Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="home" element={<AOHome />} />
+            <Route path="accountdetails" element={<AccountDetailsIndex />} />
+            <Route path="tr" element={<TRIndex />} />
           </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
