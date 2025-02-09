@@ -18,7 +18,10 @@ export const formSchema = yup.object().shape({
   FirstName: yup.string().required("First name is a required field"),
   Surname: yup.string().required(),
   Email: yup.string().email().required(),
-  DOB: yup.date().required("DOB is a required field"),
+  DOB: yup
+    .date()
+    .required("DOB is a required field")
+    .max(new Date(), "Date of birth cannot be on a future date"),
   Password: yup
     .string()
     .min(4)

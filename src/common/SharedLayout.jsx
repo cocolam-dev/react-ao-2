@@ -17,7 +17,7 @@ const SharedLayout = () => {
             : "demo-warning"
         }
       >
-        DEMO ONLY - NOT RELATED IN ANY WAY TO AUSTRAC
+        DEMO ONLY - NOT RELATED TO ANY REAL ORGANISATION
       </h2>
 
       <SideMenu />

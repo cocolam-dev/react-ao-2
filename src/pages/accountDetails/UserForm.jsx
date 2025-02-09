@@ -17,6 +17,8 @@ function UserForm() {
     setTempUser,
   } = useGlobalContext();
 
+  const [isPasswordMismatch, setIsPasswordMismatch] = useState(false);
+
   const [isFormSubmitSuccessful, setIsFormSubmitSuccessful] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -87,6 +89,17 @@ function UserForm() {
     }
   };
 
+  const validateConfirmPassword = (e) => {
+    if (e.target.name === "Password") {
+      setIsPasswordMismatch(
+        tempUser.ConfirmPassword !== "" &&
+          e.target.value !== tempUser.ConfirmPassword
+      );
+    } else if (e.target.name === "ConfirmPassword") {
+      setIsPasswordMismatch(e.target.value !== tempUser.Password);
+    }
+  };
+
   const handleChange = (e) => {
     let newUser = {
       ...tempUser,
@@ -96,6 +109,7 @@ function UserForm() {
       newUser.BusinessStructureDescription = "";
     }
     setTempUser(newUser);
+    validateConfirmPassword(e);
   };
 
   return (
@@ -295,6 +309,7 @@ function UserForm() {
               name="Password"
               placeholder="Password"
               disabled={!isEditingForm}
+              onBlur={validateConfirmPassword}
               value={tempUser.Password}
               {...register("Password", {
                 onChange: (e) => handleChange(e),
@@ -312,12 +327,16 @@ function UserForm() {
               name="ConfirmPassword"
               placeholder="Confirm password"
               disabled={!isEditingForm}
+              onBlur={validateConfirmPassword}
               value={currentUser && tempUser.ConfirmPassword}
               {...register("ConfirmPassword", {
                 onChange: (e) => handleChange(e),
               })}
             />
             <p className="error-message">{errors.ConfirmPassword?.message}</p>
+            <p className="error-message">
+              {isPasswordMismatch && "password not match!"}
+            </p>
           </div>
         </fieldset>
 

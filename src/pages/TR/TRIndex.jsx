@@ -110,7 +110,7 @@ const TRIndex = () => {
           >
             Submit
           </button>
-          <p>Click the Submit button to transmit the file to AUSTRAC.</p>
+          <p>Click the Submit button to transmit the file to MyPortal.</p>
         </fieldset>
       </form>
       <TRTable />
